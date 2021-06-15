@@ -12,7 +12,7 @@ namespace LinqWorkshop
         {
             var words = new[] { "abaccca", "cbdessdsaasdzx", "adasdxczvvadaww" };
 
-            var result = 0.0f; // Your solution goes here
+            var result = words.Average(x => x.Length);
 
             result.ShouldBe(12.0f);
         }

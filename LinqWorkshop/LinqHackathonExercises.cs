@@ -43,8 +43,8 @@ namespace LinqWorkshop
         {
             var words = new[] { "abaccca", "cbdessdsaasdzx", "adasdxczvvadaww", "isdfesdf", "i" };
 
-            var result = Enumerable.Range('a', 'z'-'a'+1)
-                .ToDictionary(x => (char) x,
+            var result = Enumerable.Range('a', 'z' - 'a' + 1)
+                .ToDictionary(x => (char)x,
                               x => words.Count(w => w[0] == (char)x)
                 );
 
@@ -67,7 +67,6 @@ namespace LinqWorkshop
             result[8].ShouldBe(new[] { 'y', 'z' });
         }
 
-
         [Fact]
         public void Ex6_CalculateCategoryAveragePrice()
         {
@@ -85,12 +84,13 @@ namespace LinqWorkshop
                 new {Name = "Scott Genius", Price = 2000, CategoryId = 1},
             };
 
-            var result =
-                new[] { new { Name = "Sports", Price = 0 } } // Your solution goes here
-                    .ToDictionary(x => x.Name, x => x.Price);
+            var result = category.ToDictionary(
+                    c => c.Name,
+                    c => products.Where(x => x.CategoryId == c.Id).Sum(p => p.Price)
+                );
 
             result["Sports"].ShouldBe(2000);
-            result["Cars"].ShouldBe(10000);
+            result["Cars"].ShouldBe(30000);
             result["Merchandise"].ShouldBe(0);
         }
 

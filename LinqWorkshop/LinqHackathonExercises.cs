@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Xunit;
@@ -42,7 +43,10 @@ namespace LinqWorkshop
         {
             var words = new[] { "abaccca", "cbdessdsaasdzx", "adasdxczvvadaww", "isdfesdf", "i" };
 
-            var result = new Dictionary<char, int>(); // Your solution goes here
+            var result = Enumerable.Range('a', 'z'-'a'+1)
+                .ToDictionary(x => (char) x,
+                              x => words.Count(w => w[0] == (char)x)
+                );
 
             result['a'].ShouldBe(2);
             result['c'].ShouldBe(1);

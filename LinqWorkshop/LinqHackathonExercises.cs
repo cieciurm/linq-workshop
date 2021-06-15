@@ -1,77 +1,77 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
+using Xunit;
+using Shouldly;
 
 namespace LinqWorkshop
 {
-    [TestFixture]
     public class LinqHackathonExercises
     {
-        [Test]
+        [Fact]
         public void Ex1_CalculateAverageLengthOfWords()
         {
             var words = new[] { "abaccca", "cbdessdsaasdzx", "adasdxczvvadaww" };
 
             var result = 0.0f; // Your solution goes here
 
-            Assert.That(result, Is.EqualTo(12.0f));
+            result.ShouldBe(12.0f);
         }
 
-        [Test]
-        public void Ex2_ConcatenateStringsInArrayWithColonSeparator()
+        [Fact]
+        public void Ex2_ConcatenatesInArrayWithColonSeparator()
         {
             var stringArray = Enumerable.Range(1, 10).Select(x => x.ToString()).ToArray();
 
             var result = string.Empty; // Your solution goes here (No string.Join()!, no loops!)
 
-            Assert.That(result, Is.EqualTo("1,2,3,4,5,6,7,8,9,10"));
+            result.ShouldBe("1,2,3,4,5,6,7,8,9,10");
         }
 
-        [Test]
+        [Fact]
         public void Ex3_SelectAllDistinctCharactersFromWordListInAscendingOrder()
         {
             var words = new[] { "abaccca", "cbdessdsaasdzx", "adasdxczvvadaww" };
 
             var result = Enumerable.Empty<char>(); // Your solution goes here
 
-            Assert.That(result, Is.EqualTo(new[] { 'a', 'b', 'c', 'd', 'e', 's', 'v', 'w', 'x', 'z' }));
+            result.ShouldBe(new[] { 'a', 'b', 'c', 'd', 'e', 's', 'v', 'w', 'x', 'z' });
         }
 
-        [Test]
+        [Fact]
         public void Ex4_ForeachCharCountWordsThatStartsWithIt()
         {
             var words = new[] { "abaccca", "cbdessdsaasdzx", "adasdxczvvadaww", "isdfesdf", "i" };
 
             var result = new Dictionary<char, int>(); // Your solution goes here
 
-            Assert.That(result['a'], Is.EqualTo(2));
-            Assert.That(result['c'], Is.EqualTo(1));
-            Assert.That(result['i'], Is.EqualTo(2));
-            Assert.That(result['b'], Is.EqualTo(0));
-            Assert.That(result['z'], Is.EqualTo(0));
+            result['a'].ShouldBe(2);
+            result['c'].ShouldBe(1);
+            result['i'].ShouldBe(2);
+            result['b'].ShouldBe(0);
+            result['z'].ShouldBe(0);
         }
 
-        [Test]
+        [Fact]
         public void Ex5_SplitListInToListOfListEachContainingThreeSubsequentElements()
         {
             var chars = Enumerable.Range('a', 26).Select(c => (char)c);
 
             var result = new List<IEnumerable<char>>(); // Your solution goes here
 
-            Assert.That(result[0], Is.EqualTo(new[] { 'a', 'b', 'c' }));
-            Assert.That(result[1], Is.EqualTo(new[] { 'd', 'e', 'f' }));
-            Assert.That(result[8], Is.EqualTo(new[] { 'y', 'z' }));
+            result[0].ShouldBe(new[] { 'a', 'b', 'c' });
+            result[1].ShouldBe(new[] { 'd', 'e', 'f' });
+            result[8].ShouldBe(new[] { 'y', 'z' });
         }
 
 
-        [Test]
+        [Fact]
         public void Ex6_CalculateCategoryAveragePrice()
         {
             var category = new[]
             {
                 new {Name = "Sports", Id = 1},
                 new {Name = "Cars", Id = 2},
-                new {Name = "Marchendise", Id = 3},
+                new {Name = "Merchandise", Id = 3},
             };
             var products = new[]
             {
@@ -85,33 +85,33 @@ namespace LinqWorkshop
                 new[] { new { Name = "Sports", Price = 0 } } // Your solution goes here
                     .ToDictionary(x => x.Name, x => x.Price);
 
-            Assert.That(result["Sports"], Is.EqualTo(2000));
-            Assert.That(result["Cars"], Is.EqualTo(10000));
-            Assert.That(result["Marchendise"], Is.EqualTo(0));
+            result["Sports"].ShouldBe(2000);
+            result["Cars"].ShouldBe(10000);
+            result["Merchandise"].ShouldBe(0);
         }
 
-        [Test]
+        [Fact]
         public void Ex7_CalculateTriangleSolutionNumberLessThen100()
         {
             // |{(a,b,c) | a^2+b^2=c^2 and 0 < a,b,c <= 100}| 
 
             var result = new[] { new { a = 3, b = 4, c = 5 } }; // Your solution goes here
 
-            Assert.That(result.Count(), Is.EqualTo(52));
+            result.Count().ShouldBe(52);
         }
 
-        [Test]
-        public void Ex8_CalculateFiftiethFibbonacciNumber()
+        [Fact]
+        public void Ex8_CalculateFiftiethFibonacciNumber()
         {
             // F_0 = 0, F_1 = 1, F_2 = 1, ...
 
-            var result = -1; // Your solution goes here
+            var result = -1L; // Your solution goes here
 
-            Assert.That(result, Is.EqualTo(12586269025L));
+            result.ShouldBe(12586269025L);
         }
 
-        [Test]
-        public void Ex9_CalculatePolynomianValue()
+        [Fact]
+        public void Ex9_CalculatePolynomialValue()
         {
             var coefs = new[]
             {
@@ -124,13 +124,13 @@ namespace LinqWorkshop
 
             var result = 0; // Your solution goes here
 
-            Assert.That(result, Is.EqualTo(21));
+            result.ShouldBe(21);
         }
 
-        [Test]
+        [Fact]
         public void Ex10_SelectGreatestProductFromGrid()
         {
-            // select grates product of four adjacent element in the grid( up, down, right,left, diagonally) 70600674
+            // select greatest product of four adjacent element in the grid( up, down, right,left, diagonally) 70600674
             var grid = new[,]
             {
                 {08, 02, 22, 97, 38, 15, 00, 40, 00, 75, 04, 05, 07, 78, 52, 12, 50, 77, 91, 08},
@@ -155,10 +155,9 @@ namespace LinqWorkshop
                 {01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48},
             };
 
-
             var result = -1;
 
-            Assert.That(result, Is.EqualTo(70600674));
+            result.ShouldBe(70600674);
         }
     }
 }

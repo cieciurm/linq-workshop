@@ -32,7 +32,7 @@ namespace LinqWorkshop
         {
             var words = new[] { "abaccca", "cbdessdsaasdzx", "adasdxczvvadaww" };
 
-            var result = Enumerable.Empty<char>(); // Your solution goes here
+            var result = words.SelectMany(x => x).Distinct().OrderBy(x => x);
 
             result.ShouldBe(new[] { 'a', 'b', 'c', 'd', 'e', 's', 'v', 'w', 'x', 'z' });
         }

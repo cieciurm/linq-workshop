@@ -105,7 +105,7 @@ namespace LinqWorkshop
 
             var result = new[] { new { a = 3, b = 4, c = 5 } }; // Your solution goes here
 
-            result.Count().ShouldBe(52);
+            result.Length.ShouldBe(52);
         }
 
         [Fact]
@@ -121,6 +121,7 @@ namespace LinqWorkshop
         [Fact]
         public void Ex9_CalculatePolynomialValue()
         {
+            // P(x) = a0*x^p0 + a1*x^p1 + a2*x*p2 + ...
             var coefs = new[]
             {
                 new {a = 2, p = 4},
@@ -130,7 +131,7 @@ namespace LinqWorkshop
             };
             var pt = 2;
 
-            var result = 0; // Your solution goes here
+            var result = coefs.Sum(x => x.a * Math.Pow(pt, x.p));
 
             result.ShouldBe(21);
         }

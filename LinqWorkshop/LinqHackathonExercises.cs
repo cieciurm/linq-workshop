@@ -22,7 +22,7 @@ namespace LinqWorkshop
         {
             var stringArray = Enumerable.Range(1, 10).Select(x => x.ToString()).ToArray();
 
-            var result = string.Empty; // Your solution goes here (No string.Join()!, no loops!)
+            var result = stringArray.Aggregate((existing, current) => $"{existing},{current}");
 
             result.ShouldBe("1,2,3,4,5,6,7,8,9,10");
         }

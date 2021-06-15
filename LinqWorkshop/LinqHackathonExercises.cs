@@ -60,7 +60,11 @@ namespace LinqWorkshop
         {
             var chars = Enumerable.Range('a', 26).Select(c => (char)c);
 
-            var result = new List<IEnumerable<char>>(); // Your solution goes here
+            const int size = 3;
+            var result = chars.Select((x, i) => KeyValuePair.Create(x, i / size))   // generate chunk number
+                .GroupBy(x => x.Value)                                              // group by chunk number
+                .Select(g => g.Select(kv => kv.Key))                                // select values for chunk
+                .ToList();
 
             result[0].ShouldBe(new[] { 'a', 'b', 'c' });
             result[1].ShouldBe(new[] { 'd', 'e', 'f' });

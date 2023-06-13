@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using Xunit;
-using Shouldly;
 
 namespace LinqWorkshop;
 
@@ -14,7 +14,7 @@ public class LinqHackathonExercises
 
         var result = 0.0f; // Your solution goes here
 
-        result.ShouldBe(12.0f);
+        result.Should().Be(12.0f);
     }
 
     [Fact]
@@ -24,7 +24,7 @@ public class LinqHackathonExercises
 
         var result = string.Empty; // Your solution goes here (No string.Join()!, no loops!)
 
-        result.ShouldBe("1,2,3,4,5,6,7,8,9,10");
+        result.Should().Be("1,2,3,4,5,6,7,8,9,10");
     }
 
     [Fact]
@@ -34,7 +34,7 @@ public class LinqHackathonExercises
 
         var result = Enumerable.Empty<char>(); // Your solution goes here
 
-        result.ShouldBe(new[] { 'a', 'b', 'c', 'd', 'e', 's', 'v', 'w', 'x', 'z' });
+        result.Should().BeEquivalentTo(new[] { 'a', 'b', 'c', 'd', 'e', 's', 'v', 'w', 'x', 'z' });
     }
 
     [Fact]
@@ -44,11 +44,11 @@ public class LinqHackathonExercises
 
         var result = new Dictionary<char, int>(); // Your solution goes here
 
-        result['a'].ShouldBe(2);
-        result['c'].ShouldBe(1);
-        result['i'].ShouldBe(2);
-        result['b'].ShouldBe(0);
-        result['z'].ShouldBe(0);
+        result['a'].Should().Be(2);
+        result['c'].Should().Be(1);
+        result['i'].Should().Be(2);
+        result['b'].Should().Be(0);
+        result['z'].Should().Be(0);
     }
 
     [Fact]
@@ -58,11 +58,10 @@ public class LinqHackathonExercises
 
         var result = new List<IEnumerable<char>>(); // Your solution goes here
 
-        result[0].ShouldBe(new[] { 'a', 'b', 'c' });
-        result[1].ShouldBe(new[] { 'd', 'e', 'f' });
-        result[8].ShouldBe(new[] { 'y', 'z' });
+        result[0].Should().BeEquivalentTo(new[] { 'a', 'b', 'c' });
+        result[1].Should().BeEquivalentTo(new[] { 'd', 'e', 'f' });
+        result[8].Should().BeEquivalentTo(new[] { 'y', 'z' });
     }
-
 
     [Fact]
     public void Ex6_CalculateCategoryAveragePrice()
@@ -85,9 +84,9 @@ public class LinqHackathonExercises
             new[] { new { Name = "Sports", Price = 0 } } // Your solution goes here
                 .ToDictionary(x => x.Name, x => x.Price);
 
-        result["Sports"].ShouldBe(2000);
-        result["Cars"].ShouldBe(10000);
-        result["Merchandise"].ShouldBe(0);
+        result["Sports"].Should().Be(2000);
+        result["Cars"].Should().Be(10000);
+        result["Merchandise"].Should().Be(0);
     }
 
     [Fact]
@@ -97,7 +96,7 @@ public class LinqHackathonExercises
 
         var result = new[] { new { a = 3, b = 4, c = 5 } }; // Your solution goes here
 
-        result.Count().ShouldBe(52);
+        result.Should().HaveCount(52);
     }
 
     [Fact]
@@ -107,7 +106,7 @@ public class LinqHackathonExercises
 
         var result = -1L; // Your solution goes here
 
-        result.ShouldBe(12586269025L);
+        result.Should().Be(12586269025L);
     }
 
     [Fact]
@@ -124,7 +123,7 @@ public class LinqHackathonExercises
 
         var result = 0; // Your solution goes here
 
-        result.ShouldBe(21);
+        result.Should().Be(21);
     }
 
     [Fact]
@@ -157,6 +156,6 @@ public class LinqHackathonExercises
 
         var result = -1;
 
-        result.ShouldBe(70600674);
+        result.Should().Be(70600674);
     }
 }

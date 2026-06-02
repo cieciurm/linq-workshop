@@ -34,7 +34,7 @@ public class LinqHackathonExercises
 
         var result = Enumerable.Empty<char>(); // Your solution goes here
 
-        result.Should().BeEquivalentTo(new[] { 'a', 'b', 'c', 'd', 'e', 's', 'v', 'w', 'x', 'z' });
+        result.Should().BeEquivalentTo(['a', 'b', 'c', 'd', 'e', 's', 'v', 'w', 'x', 'z']);
     }
 
     [Fact]
@@ -58,9 +58,9 @@ public class LinqHackathonExercises
 
         var result = new List<IEnumerable<char>>(); // Your solution goes here
 
-        result[0].Should().BeEquivalentTo(new[] { 'a', 'b', 'c' });
-        result[1].Should().BeEquivalentTo(new[] { 'd', 'e', 'f' });
-        result[8].Should().BeEquivalentTo(new[] { 'y', 'z' });
+        result[0].Should().BeEquivalentTo(['a', 'b', 'c']);
+        result[1].Should().BeEquivalentTo(['d', 'e', 'f']);
+        result[8].Should().BeEquivalentTo(['y', 'z']);
     }
 
     [Fact]
